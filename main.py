@@ -58,10 +58,11 @@ with st.sidebar:
 
         **Divirta-se programando!** :sparkles:
         """
+    )
     # Campo para inserir a chave de API da Groq, que é necessária para se conectar à API da plataforma Groq e acessar o LLM
     groq_api_key = st.text_input("Insira sua chave de API da Groq", type="password", help="Você pode obter sua chave de API na plataforma Groq. Esta chave é necessária para se conectar à API e acessar o modelo de linguagem. https://platform.groq.com/")
 
-    )
+    
 
 #Título principal do app 
 st.title("Luco IA Coder") 
