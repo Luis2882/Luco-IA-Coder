@@ -119,17 +119,21 @@ with st.chat_message("assistant"):
 
     with st.spinner("Analisando sua pergunta..."):
 
-        try:
-            # Chama a API da plataforma Groq para gerar uma resposta detalhada do assistente de programação Luco IA Coder com base na pergunta ou problema fornecido pelo usuário, incluindo explicações passo a passo, exemplos de código em Python e referências à documentação oficial quando apropriado
-            chat_completion = client.chat_completion.create(
-                messages = messages_for_api,
-                model = "groq-code-llm-v1",
-                temperature = 0.2,
-                max_tokens = 500,
-
+    try:
+        # Chama a API da plataforma Groq para gerar uma resposta detalhada do assistente de programação Luco IA Coder com base na pergunta ou problema fornecido pelo usuário, incluindo explicações passo a passo, exemplos de código em Python e referências à documentação oficial quando apropriado
+        chat_completion = client.chat_completion.create(
+            messages = messages_for_api,
+            model = "groq-code-llm-v1",
+            temperature = 0.2,
+            max_tokens = 500,
             )
 
             # Extrai a resposta gerada pela IA
             assistant_response = chat_completion.choices[0].message.content
-
-            # Exibe a resposta do assistente 
+            
+            # Exibe a resposta do assistente
+            st.markdown(assistant_response)
+            
+    except Exception as e:
+            # Exibe uma mensagem amigável caso ocorra algum erro na chamada da API
+            st.error(f"Erro ao gerar resposta: {e}")
